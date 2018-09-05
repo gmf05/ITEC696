@@ -4,8 +4,25 @@ import bibtexparser
 from bibtexparser.bwriter import BibTexWriter
 from bibtexparser.bibdatabase import BibDatabase
 
-# Structure based on slides by Jim Arlow
-# https://www.slideshare.net/jimarlow/want-to-write-a-book-in-jupyter-heres-how
+'''
+List of common packages
+Uncomment any number of these and replace import
+statements with "from shared import *
+'''
+# import os
+# import sys
+# import pickle
+# import requests
+# from glob import glob
+# from datetime import datetime
+# import numpy as np
+# import pandas as pd
+# from scipy import stats
+# import matplotlib.pyplot as plt
+# import statsmodels.api as sm
+# import sklearn
+# import keras
+
 
 def make_link(filename, section, link_within_doc=True, link_type='ipynb'):
 
@@ -17,8 +34,20 @@ def make_link(filename, section, link_within_doc=True, link_type='ipynb'):
 
 def display_master_toc(link_type='html'):
     display(Markdown('# Table of Contents'))
-    unit_names = ['Introduction', 'Unit 2', 'Unit 3', 'Unit 4', 'Unit 5', 'Unit 6']
-    for n, name in enumerate(unit_names):
+
+    # TODO: Add acknowledgements?
+    '''
+    Book structure, particularly Table of Contents, based on slides by Jim Arlow
+    https://www.slideshare.net/jimarlow/want-to-write-a-book-in-jupyter-heres-how
+
+    Reference handling adapted from code by Valerio Basile
+    http://valeriobasile.github.io/Managing-my-own-bibliography/
+
+    '''
+    # display(Markdown('* [Acknowledgements](acknowledgements.{})'.format(link_type)))
+
+    num_units = 9
+    for n in range(num_units):
         display_unit_toc('unit{}/notebook.ipynb'.format(n + 1), toc_head=False, link_within_doc=False, link_type=link_type)
         lab_link = '* [Unit {} Lab](unit{}/lab.ipynb)'.format(n + 1, n + 1)
         display(Markdown(lab_link))
