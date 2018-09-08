@@ -11,7 +11,7 @@ from scipy import stats
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
 import sklearn
-import keras
+#import keras
 print('  * Finished Python packages')
 print('  * Starting local repo import')
 from shared import *
