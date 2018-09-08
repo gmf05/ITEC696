@@ -46,7 +46,7 @@ def display_master_toc(link_type='html'):
     '''
     # display(Markdown('* [Acknowledgements](acknowledgements.{})'.format(link_type)))
 
-    num_units = 9
+    num_units = 6
     for n in range(num_units):
         display_unit_toc('unit{}/notebook.ipynb'.format(n + 1), toc_head=False, link_within_doc=False, link_type=link_type)
         lab_link = '* [Unit {} Lab](unit{}/lab.ipynb)'.format(n + 1, n + 1)

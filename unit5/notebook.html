@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>contents</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>notebook</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11771,13 +11771,21 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Unit-5:-Scraping-Data">Unit 5: Scraping Data<a class="anchor-link" href="#Unit-5:-Scraping-Data">&#182;</a></h1>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">shared</span> <span class="k">import</span> <span class="n">display_master_toc</span>
-<span class="n">display_master_toc</span><span class="p">(</span><span class="n">link_type</span><span class="o">=</span><span class="s1">&#39;html&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">shared</span> <span class="k">import</span> <span class="n">display_unit_toc</span>
+<span class="n">display_unit_toc</span><span class="p">(</span><span class="s1">&#39;notebook.ipynb&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11808,14 +11816,14 @@ div#notebook {
 
 <div class="output_markdown rendered_html output_subarea ">
 <ul>
-<li><a href="unit1/notebook.html#Unit-1:-Getting-Started">Unit 1: Getting Started</a><ul>
-<li><a href="unit1/notebook.html#Download-[Cygwin-Terminal](https://cygwin.com/install.html">Download <a href="https://cygwin.com/install.html">Cygwin Terminal</a> (Windows users)</a>-(Windows-users))</li>
-<li><a href="unit1/notebook.html#Installing-Python">Installing Python</a></li>
-<li><a href="unit1/notebook.html#Virtual-environments">Virtual environments</a></li>
-<li><a href="unit1/notebook.html#Installing-libraries">Installing libraries</a></li>
-<li><a href="unit1/notebook.html#Testing-Python">Testing Python</a></li>
-<li><a href="unit1/notebook.html#Installing-an-IDE">Installing an IDE</a></li>
-<li><a href="unit1/notebook.html#Testing-Jupyter-Notebook">Testing Jupyter Notebook</a></li>
+<li><a href="#Unit-5:-Scraping-Data">Unit 5: Scraping Data</a><ul>
+<li><a href="#A">A</a></li>
+<li><a href="#A">A</a></li>
+<li><a href="#A">A</a></li>
+<li><a href="#A">A</a></li>
+<li><a href="#A">A</a></li>
+<li><a href="#A">A</a></li>
+<li><a href="#A">A</a></li>
 </ul>
 </li>
 </ul>
@@ -11824,236 +11832,145 @@ div#notebook {
 
 </div>
 
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<ul>
-<li><a href="unit1/lab.ipynb">Unit 1 Lab</a></li>
-</ul>
-
+</div>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Install <a href="https://www.google.com/chrome/">Google Chrome</a> and <a href="http://chromedriver.chromium.org">ChromeDriver</a></p>
 
-<div class="output_area">
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="k">import</span> <span class="n">random</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common</span> <span class="k">import</span> <span class="n">keys</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.action_chains</span> <span class="k">import</span> <span class="n">ActionChains</span>
+</pre></div>
 
-<div class="prompt"></div>
-
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<ul>
-<li><a href="unit2/notebook.html#Unit-2:-Data-Types">Unit 2: Data Types</a><ul>
-<li><a href="unit2/notebook.html#Objects">Objects</a></li>
-<li><a href="unit2/notebook.html#Integers-and-Floats">Integers and Floats</a></li>
-<li><a href="unit2/notebook.html#Booleans">Booleans</a></li>
-<li><a href="unit2/notebook.html#Errors">Errors</a></li>
-<li><a href="unit2/notebook.html#Strings">Strings</a></li>
-<li><a href="unit2/notebook.html#Bytes">Bytes</a></li>
-<li><a href="unit2/notebook.html#Functions">Functions</a></li>
-<li><a href="unit2/notebook.html#Dates">Dates</a></li>
-<li><a href="unit2/notebook.html#Collections:-Lists,-Tuples,-Sets">Collections: Lists, Tuples, Sets</a></li>
-<li><a href="unit2/notebook.html#Tuples">Tuples</a></li>
-<li><a href="unit2/notebook.html#Sets">Sets</a></li>
-<li><a href="unit2/notebook.html#Collections:-Dictionaries">Collections: Dictionaries</a></li>
-<li><a href="unit2/notebook.html#Vectors-and-Matrices:-Numpy">Vectors and Matrices: Numpy</a></li>
-<li><a href="unit2/notebook.html#Data-Frames:-Pandas">Data Frames: Pandas</a></li>
-<li><a href="unit2/notebook.html#Saving-Data:-Pickle">Saving Data: Pickle</a></li>
-</ul>
-</li>
-</ul>
-
+</div>
+</div>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A">A<a class="anchor-link" href="#A">&#182;</a></h2><p>B</p>
 
-<div class="output_area">
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A">A<a class="anchor-link" href="#A">&#182;</a></h2><p>B</p>
 
-<div class="prompt"></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A">A<a class="anchor-link" href="#A">&#182;</a></h2><p>B</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A">A<a class="anchor-link" href="#A">&#182;</a></h2><p>B</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A">A<a class="anchor-link" href="#A">&#182;</a></h2><p>B</p>
 
-<div class="output_markdown rendered_html output_subarea ">
-<ul>
-<li><a href="unit2/lab.ipynb">Unit 2 Lab</a></li>
-</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A">A<a class="anchor-link" href="#A">&#182;</a></h2><p>B</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A">A<a class="anchor-link" href="#A">&#182;</a></h2><p>B</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Global Python Code</span>
+</pre></div>
+
+</div>
+</div>
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Demo</span>
+<span class="c1"># Demo Python Code</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;asdf&#39;</span><span class="p">)</span>
 
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<ul>
-<li><a href="unit3/notebook.html#Unit-3:-Algorithms-in-Python">Unit 3: Algorithms in Python</a><ul>
-<li><a href="unit3/notebook.html#Functions">Functions</a></li>
-<li><a href="unit3/notebook.html#`if/elif/else`-Blocks"><code>if/elif/else</code> Blocks</a></li>
-<li><a href="unit3/notebook.html#`with`-...-`as`-..."><code>with</code> ... <code>as</code> ...</a></li>
-<li><a href="unit3/notebook.html#Loops:-`for`-and-`while`">Loops: <code>for</code> and <code>while</code></a></li>
-<li><a href="unit3/notebook.html#List-Comprehensions">List Comprehensions</a></li>
-<li><a href="unit3/notebook.html#`try`/`except`-blocks"><code>try</code>/<code>except</code> blocks</a></li>
-<li><a href="unit3/notebook.html#Debugging">Debugging</a></li>
-</ul>
-</li>
-</ul>
+<span class="c1"># Demo</span>
+</pre></div>
 
 </div>
-
+</div>
 </div>
 
-<div class="output_area">
+<div class="output_wrapper">
+<div class="output">
 
-<div class="prompt"></div>
-
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<ul>
-<li><a href="unit3/lab.ipynb">Unit 3 Lab</a></li>
-</ul>
-
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<ul>
-<li><a href="unit4/notebook.html#Unit-4:-Processing-and-Visualizing-Data">Unit 4: Processing and Visualizing Data</a><ul>
-<li><a href="unit4/notebook.html#Accessing-Data">Accessing Data</a></li>
-<li><a href="unit4/notebook.html#Slicing-and-Filtering">Slicing and Filtering</a></li>
-<li><a href="unit4/notebook.html#Concatenating">Concatenating</a></li>
-<li><a href="unit4/notebook.html#Joining">Joining</a></li>
-<li><a href="unit4/notebook.html#Visualizing-with-Matplotlib">Visualizing with Matplotlib</a></li>
-<li><a href="unit4/notebook.html#Animations">Animations</a></li>
-</ul>
-</li>
-</ul>
-
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<ul>
-<li><a href="unit4/lab.ipynb">Unit 4 Lab</a></li>
-</ul>
-
-</div>
-
-</div>
 
 <div class="output_area">
 
 <div class="prompt"></div>
 
 
-
-<div class="output_markdown rendered_html output_subarea ">
-<ul>
-<li><a href="unit5/notebook.html#Unit-5:-Scraping-Data">Unit 5: Scraping Data</a><ul>
-<li><a href="unit5/notebook.html#A">A</a></li>
-<li><a href="unit5/notebook.html#A">A</a></li>
-<li><a href="unit5/notebook.html#A">A</a></li>
-<li><a href="unit5/notebook.html#A">A</a></li>
-<li><a href="unit5/notebook.html#A">A</a></li>
-<li><a href="unit5/notebook.html#A">A</a></li>
-<li><a href="unit5/notebook.html#A">A</a></li>
-</ul>
-</li>
-</ul>
-
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>asdf
+</pre>
 </div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<ul>
-<li><a href="unit5/lab.ipynb">Unit 5 Lab</a></li>
-</ul>
-
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<ul>
-<li><a href="unit6/notebook.html#Unit-6:-Process-and-Visualizing-Data">Unit 6: Process and Visualizing Data</a><ul>
-<li><a href="unit6/notebook.html#A">A</a></li>
-<li><a href="unit6/notebook.html#A">A</a></li>
-<li><a href="unit6/notebook.html#A">A</a></li>
-<li><a href="unit6/notebook.html#A">A</a></li>
-<li><a href="unit6/notebook.html#A">A</a></li>
-<li><a href="unit6/notebook.html#A">A</a></li>
-<li><a href="unit6/notebook.html#A">A</a></li>
-</ul>
-</li>
-</ul>
-
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<ul>
-<li><a href="unit6/lab.ipynb">Unit 6 Lab</a></li>
-</ul>
-
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<ul>
-<li><a href="refs.html">References</a></li>
-</ul>
-
-</div>
-
 </div>
 
 </div>

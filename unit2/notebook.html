@@ -12679,7 +12679,7 @@ True
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>2018-09-07 23:27:11.584927 
+<pre>2018-09-07 23:31:12.132548 
 
 Fall
 </pre>
@@ -13006,7 +13006,54 @@ True
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Note our single strings (one pair of quotes each) are now broken into multiple strings (eight pairs of quotes each). The commas are no longer part of the string and instead they now separate the multiple strings we received after splitting. The most common delimiters we split on are commas <code>,</code>, spaces <code>`, tabs</code>\t<code>, and new lines</code>\n`.</p>
 <p>One question to ask yourself: What would have happened if we had omitted the space above? If you're not entirely sure, try running this file as <code>.ipynb</code> and making the change yourself.</p>
-<p>Another common tool for manipulating strings is the package <code>re</code>. The name <code>re</code> is short for "regular expressions". which are a powerful syntax for matching and replacing strings. Regular expressions can handle exact string matches as well as more general concepts like "find all digits within the string".</p>
+<h4 id="String-formatting">String formatting<a class="anchor-link" href="#String-formatting">&#182;</a></h4><p>Strings have a method <code>format()</code> that allows us to build strings with placeholders, which allow flexible filling of variables into strings. The placeholder(s) is specified by braces <code>{ }</code> which either a) are empty or b) have a variable name. Our input to <code>format()</code> is the variable we're filling in.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">team_cities</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Rockets&#39;</span><span class="p">:</span> <span class="s1">&#39;Houston&#39;</span><span class="p">,</span> <span class="s1">&#39;Warriors&#39;</span><span class="p">:</span> <span class="s1">&#39;Golden State&#39;</span><span class="p">,</span> <span class="s1">&#39;Hawks&#39;</span><span class="p">:</span> <span class="s1">&#39;Atlanta&#39;</span><span class="p">,</span> <span class="s1">&#39;Wizars&#39;</span><span class="p">:</span> <span class="s1">&#39;Washington&#39;</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">team</span><span class="p">,</span> <span class="n">city</span> <span class="ow">in</span> <span class="n">team_cities</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ths </span><span class="si">{team}</span><span class="s1"> play at an arena in </span><span class="si">{city}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">team</span><span class="o">=</span><span class="n">team</span><span class="p">,</span> <span class="n">city</span><span class="o">=</span><span class="n">city</span><span class="p">))</span>
+<span class="c1">#     print(&#39;Ths {} play at an arena in {}&#39;.format(team, city)) # same</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Ths Rockets play at an arena in Houston
+Ths Warriors play at an arena in Golden State
+Ths Hawks play at an arena in Atlanta
+Ths Wizars play at an arena in Washington
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Regular-expressions">Regular expressions<a class="anchor-link" href="#Regular-expressions">&#182;</a></h4><p>Another common tool for manipulating strings is the package <code>re</code>. The name <code>re</code> is short for "regular expressions". which are a powerful syntax for matching and replacing strings. Regular expressions can handle exact string matches as well as more general concepts like "find all digits within the string".</p>
 
 </div>
 </div>
@@ -13767,7 +13814,7 @@ Raptors
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;Rockets&#39;, &#39;Warriors&#39;, &#39;Bulls&#39;, &#39;Magic&#39;, &#39;Pelicans&#39;}
+<pre>{&#39;Warriors&#39;, &#39;Bulls&#39;, &#39;Rockets&#39;, &#39;Magic&#39;, &#39;Pelicans&#39;}
 &lt;class &#39;set&#39;&gt;
 </pre>
 </div>
@@ -13811,7 +13858,7 @@ Raptors
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;Rockets&#39;, &#39;Warriors&#39;, &#39;Bulls&#39;, &#39;Magic&#39;, &#39;Pelicans&#39;]
+<pre>[&#39;Warriors&#39;, &#39;Bulls&#39;, &#39;Rockets&#39;, &#39;Magic&#39;, &#39;Pelicans&#39;]
 </pre>
 </div>
 </div>
@@ -13874,11 +13921,11 @@ Raptors
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;Markelle Fultz&#39;, &#39;Gordon Hayward&#39;, &#39;Al Horford&#39;, &#39;Robert Covington&#39;, &#39;JJ Redick&#39;, &#39;Ben Simmons&#39;, &#39;Jaylen Brown&#39;, &#39;Joel Embiid&#39;, &#39;Kyrie Irving&#39;, &#39;Jayson Tatum&#39;}
-{&#39;Gordon Hayward&#39;, &#39;Al Horford&#39;, &#39;Robert Covington&#39;, &#39;JJ Redick&#39;, &#39;Ben Simmons&#39;, &#39;Jaylen Brown&#39;, &#39;Joel Embiid&#39;, &#39;Kyrie Irving&#39;}
-{&#39;JJ Redick&#39;, &#39;Ben Simmons&#39;, &#39;Robert Covington&#39;, &#39;Joel Embiid&#39;}
-{&#39;Markelle Fultz&#39;, &#39;TJ McConnell&#39;, &#39;Robert Covington&#39;, &#39;JJ Redick&#39;, &#39;Ben Simmons&#39;, &#39;Joel Embiid&#39;}
-{&#39;Markelle Fultz&#39;, &#39;Robert Covington&#39;, &#39;JJ Redick&#39;, &#39;Ben Simmons&#39;, &#39;Joel Embiid&#39;}
+<pre>{&#39;JJ Redick&#39;, &#39;Joel Embiid&#39;, &#39;Jayson Tatum&#39;, &#39;Ben Simmons&#39;, &#39;Gordon Hayward&#39;, &#39;Markelle Fultz&#39;, &#39;Kyrie Irving&#39;, &#39;Al Horford&#39;, &#39;Jaylen Brown&#39;, &#39;Robert Covington&#39;}
+{&#39;JJ Redick&#39;, &#39;Joel Embiid&#39;, &#39;Ben Simmons&#39;, &#39;Gordon Hayward&#39;, &#39;Kyrie Irving&#39;, &#39;Al Horford&#39;, &#39;Robert Covington&#39;, &#39;Jaylen Brown&#39;}
+{&#39;Joel Embiid&#39;, &#39;JJ Redick&#39;, &#39;Ben Simmons&#39;, &#39;Robert Covington&#39;}
+{&#39;Joel Embiid&#39;, &#39;JJ Redick&#39;, &#39;Ben Simmons&#39;, &#39;Markelle Fultz&#39;, &#39;Robert Covington&#39;, &#39;TJ McConnell&#39;}
+{&#39;Joel Embiid&#39;, &#39;JJ Redick&#39;, &#39;Ben Simmons&#39;, &#39;Markelle Fultz&#39;, &#39;Robert Covington&#39;}
 </pre>
 </div>
 </div>
