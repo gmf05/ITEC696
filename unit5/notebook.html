@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>notebook</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>notebook</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11,8 +13,8 @@
 *
 */
 /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1107,6 +1109,7 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2535,6 +2538,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3025,6 +3029,7 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8755,9 +8760,6 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
-[dir="rtl"] #ipython_notebook {
-  float: right !important;
-}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -8960,14 +8962,8 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
-[dir="rtl"] #tabs li {
-  float: right;
-}
 ul#tabs {
   margin-bottom: 4px;
-}
-[dir="rtl"] ul#tabs {
-  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -8990,16 +8986,6 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
-}
-[dir="rtl"] .list_toolbar .tree-buttons {
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-right {
-  padding-top: 1px;
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-left {
-  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9136,9 +9122,6 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
-[dir="rtl"] #tree-selector a {
-  float: right;
-}
 #button-select-all {
   min-width: 50px;
 }
@@ -9228,9 +9211,6 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
-[dir="rtl"] #new-menu {
-  text-align: right;
-}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9275,9 +9255,6 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
-}
-[dir="rtl"] #running .col-sm-8 {
-  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9574,7 +9551,6 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
-  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9595,6 +9571,11 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
+}
+@-moz-document url-prefix() {
+  div.inner_cell {
+    overflow-x: hidden;
+  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11265,7 +11246,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 21ex;
+  width: 20ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11577,7 +11558,6 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
-  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11591,9 +11571,6 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
-}
-.terminal-app .terminal .xterm-rows {
-  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11654,10 +11631,8 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
-.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
-.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11668,11 +11643,9 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11726,7 +11699,9 @@ body {
 div#notebook {
   overflow: visible;
   border-top: none;
-}@media print {
+}
+
+@media print {
   div.cell {
     display: block;
     page-break-inside: avoid;
@@ -11747,7 +11722,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -11771,7 +11746,8 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11781,7 +11757,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">shared</span> <span class="k">import</span> <span class="n">display_unit_toc</span>
@@ -11796,11 +11772,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
+<div class="output_area"><div class="prompt"></div>
 
 <div class="output_markdown rendered_html output_subarea ">
 <h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h1>
@@ -11808,24 +11780,11 @@ div#notebook {
 
 </div>
 
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
+<div class="output_area"><div class="prompt"></div>
 
 <div class="output_markdown rendered_html output_subarea ">
 <ul>
-<li><a href="#Unit-5:-Scraping-Data">Unit 5: Scraping Data</a><ul>
-<li><a href="#A">A</a></li>
-<li><a href="#A">A</a></li>
-<li><a href="#A">A</a></li>
-<li><a href="#A">A</a></li>
-<li><a href="#A">A</a></li>
-<li><a href="#A">A</a></li>
-<li><a href="#A">A</a></li>
-</ul>
-</li>
+<li><a href="#Unit-5:-Scraping-Data">Unit 5: Scraping Data</a></li>
 </ul>
 
 </div>
@@ -11836,7 +11795,8 @@ div#notebook {
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11847,7 +11807,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
@@ -11859,82 +11819,8 @@ div#notebook {
 <span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
 <span class="kn">from</span> <span class="nn">selenium.webdriver.common</span> <span class="k">import</span> <span class="n">keys</span>
 <span class="kn">from</span> <span class="nn">selenium.webdriver.common.action_chains</span> <span class="k">import</span> <span class="n">ActionChains</span>
-</pre></div>
 
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="A">A<a class="anchor-link" href="#A">&#182;</a></h2><p>B</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="A">A<a class="anchor-link" href="#A">&#182;</a></h2><p>B</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="A">A<a class="anchor-link" href="#A">&#182;</a></h2><p>B</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="A">A<a class="anchor-link" href="#A">&#182;</a></h2><p>B</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="A">A<a class="anchor-link" href="#A">&#182;</a></h2><p>B</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="A">A<a class="anchor-link" href="#A">&#182;</a></h2><p>B</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="A">A<a class="anchor-link" href="#A">&#182;</a></h2><p>B</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Global Python Code</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="s1">&#39;/Users/gfiddyment/bin/chromedriver&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11944,14 +11830,16 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Demo</span>
-<span class="c1"># Demo Python Code</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;asdf&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.basketball-reference.com/wnba/years/2018.html&#39;</span>
+<span class="c1"># driver.get(url)</span>
+<span class="n">tables</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_tag_name</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">tables</span><span class="p">)</span>
 
-<span class="c1"># Demo</span>
+<span class="n">tables</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_tag_name</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">tables</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11962,17 +11850,607 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area">
-
-<div class="prompt"></div>
+<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>asdf
-</pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>60</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="attachment:Screen%20Shot%202018-09-09%20at%2012.21.23%20AM.png" alt="Screen%20Shot%202018-09-09%20at%2012.21.23%20AM.png"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Getting data</span>
+<span class="n">table_html</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s1">&#39;//table[@id=&quot;team&quot;]&#39;</span><span class="p">)</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">table_html</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rows</span> <span class="k">if</span> <span class="s1">&#39;Rk&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">r</span> <span class="ow">and</span> <span class="s1">&#39;Average&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">r</span><span class="p">]</span>
+
+<span class="c1"># Getting column names</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="n">headers</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;City&#39;</span><span class="p">)</span>
+<span class="c1"># headers</span>
+
+<span class="c1"># Trying to combine column names + data</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="c1"># pd.DataFrame(data, columns=headers)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[32]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>...</th>
+      <th>19</th>
+      <th>20</th>
+      <th>21</th>
+      <th>22</th>
+      <th>23</th>
+      <th>24</th>
+      <th>25</th>
+      <th>26</th>
+      <th>27</th>
+      <th>28</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Connecticut</td>
+      <td>Sun</td>
+      <td>34</td>
+      <td>6799</td>
+      <td>1144</td>
+      <td>2455</td>
+      <td>.466</td>
+      <td>258</td>
+      <td>703</td>
+      <td>...</td>
+      <td>1254</td>
+      <td>666</td>
+      <td>243</td>
+      <td>101</td>
+      <td>441</td>
+      <td>661</td>
+      <td>2979</td>
+      <td>79.1</td>
+      <td>110.8</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Seattle</td>
+      <td>Storm</td>
+      <td>34</td>
+      <td>6849</td>
+      <td>1093</td>
+      <td>2335</td>
+      <td>.468</td>
+      <td>307</td>
+      <td>816</td>
+      <td>...</td>
+      <td>1204</td>
+      <td>721</td>
+      <td>266</td>
+      <td>149</td>
+      <td>433</td>
+      <td>559</td>
+      <td>2966</td>
+      <td>77.9</td>
+      <td>111.1</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Dallas</td>
+      <td>Wings</td>
+      <td>34</td>
+      <td>6800</td>
+      <td>1037</td>
+      <td>2349</td>
+      <td>.441</td>
+      <td>229</td>
+      <td>752</td>
+      <td>...</td>
+      <td>1246</td>
+      <td>614</td>
+      <td>229</td>
+      <td>158</td>
+      <td>461</td>
+      <td>631</td>
+      <td>2946</td>
+      <td>79.4</td>
+      <td>109.1</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Phoenix</td>
+      <td>Mercury</td>
+      <td>34</td>
+      <td>6799</td>
+      <td>1016</td>
+      <td>2221</td>
+      <td>.457</td>
+      <td>288</td>
+      <td>799</td>
+      <td>...</td>
+      <td>1109</td>
+      <td>700</td>
+      <td>198</td>
+      <td>160</td>
+      <td>431</td>
+      <td>641</td>
+      <td>2916</td>
+      <td>77.9</td>
+      <td>110.1</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Chicago</td>
+      <td>Sky</td>
+      <td>34</td>
+      <td>6899</td>
+      <td>1055</td>
+      <td>2330</td>
+      <td>.453</td>
+      <td>244</td>
+      <td>671</td>
+      <td>...</td>
+      <td>1124</td>
+      <td>721</td>
+      <td>227</td>
+      <td>132</td>
+      <td>491</td>
+      <td>629</td>
+      <td>2848</td>
+      <td>79.2</td>
+      <td>104.2</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>Washington</td>
+      <td>Mystics</td>
+      <td>34</td>
+      <td>6599</td>
+      <td>1006</td>
+      <td>2244</td>
+      <td>.448</td>
+      <td>277</td>
+      <td>773</td>
+      <td>...</td>
+      <td>1076</td>
+      <td>587</td>
+      <td>237</td>
+      <td>127</td>
+      <td>374</td>
+      <td>606</td>
+      <td>2789</td>
+      <td>76.3</td>
+      <td>110.7</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>Las</td>
+      <td>Vegas</td>
+      <td>Aces</td>
+      <td>34</td>
+      <td>6624</td>
+      <td>1032</td>
+      <td>2334</td>
+      <td>.442</td>
+      <td>125</td>
+      <td>...</td>
+      <td>906</td>
+      <td>1216</td>
+      <td>668</td>
+      <td>209</td>
+      <td>128</td>
+      <td>412</td>
+      <td>584</td>
+      <td>2786</td>
+      <td>80.7</td>
+      <td>104.1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>Atlanta</td>
+      <td>Dream</td>
+      <td>34</td>
+      <td>6799</td>
+      <td>1016</td>
+      <td>2383</td>
+      <td>.426</td>
+      <td>199</td>
+      <td>626</td>
+      <td>...</td>
+      <td>1217</td>
+      <td>618</td>
+      <td>259</td>
+      <td>180</td>
+      <td>424</td>
+      <td>620</td>
+      <td>2782</td>
+      <td>79.5</td>
+      <td>102.9</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>Minnesota</td>
+      <td>Lynx</td>
+      <td>34</td>
+      <td>6799</td>
+      <td>1032</td>
+      <td>2290</td>
+      <td>.451</td>
+      <td>183</td>
+      <td>529</td>
+      <td>...</td>
+      <td>1199</td>
+      <td>665</td>
+      <td>235</td>
+      <td>100</td>
+      <td>463</td>
+      <td>563</td>
+      <td>2684</td>
+      <td>76.8</td>
+      <td>102.8</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>Los</td>
+      <td>Angeles</td>
+      <td>Sparks</td>
+      <td>34</td>
+      <td>6824</td>
+      <td>1026</td>
+      <td>2268</td>
+      <td>.452</td>
+      <td>204</td>
+      <td>...</td>
+      <td>819</td>
+      <td>1065</td>
+      <td>623</td>
+      <td>270</td>
+      <td>96</td>
+      <td>371</td>
+      <td>558</td>
+      <td>2683</td>
+      <td>75.3</td>
+      <td>104.4</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>New</td>
+      <td>York</td>
+      <td>Liberty</td>
+      <td>34</td>
+      <td>6850</td>
+      <td>1001</td>
+      <td>2315</td>
+      <td>.432</td>
+      <td>226</td>
+      <td>...</td>
+      <td>867</td>
+      <td>1161</td>
+      <td>662</td>
+      <td>224</td>
+      <td>93</td>
+      <td>477</td>
+      <td>703</td>
+      <td>2641</td>
+      <td>77.8</td>
+      <td>99.1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>Indiana</td>
+      <td>Fever</td>
+      <td>34</td>
+      <td>6899</td>
+      <td>981</td>
+      <td>2414</td>
+      <td>.406</td>
+      <td>192</td>
+      <td>591</td>
+      <td>...</td>
+      <td>1123</td>
+      <td>544</td>
+      <td>218</td>
+      <td>92</td>
+      <td>381</td>
+      <td>634</td>
+      <td>2597</td>
+      <td>77.0</td>
+      <td>97.8</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+<p>12 rows × 29 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[85]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">parse_html</span><span class="p">(</span><span class="n">html</span><span class="p">):</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+    
+    <span class="c1"># TODO: Add names in here</span>
+    <span class="c1">#data = [r.split(&#39; &#39;)[-8:] for r in rows[1:]]</span>
+    
+    <span class="n">team_names_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">8</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
+    <span class="n">team_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">team_names_list</span><span class="p">]</span>
+
+    <span class="n">headers</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+    
+    <span class="c1">#for i, t in enumerate(team_names):</span>
+    <span class="c1">#    data[i].insert(0, t)</span>
+    
+    <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">headers</span>
+
+<span class="n">standings_E_html</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s1">&#39;//table[@id=&quot;standings_E&quot;]&#39;</span><span class="p">)</span>
+<span class="n">se_data</span><span class="p">,</span> <span class="n">se_header</span> <span class="o">=</span> <span class="n">parse_html</span><span class="p">(</span><span class="n">standings_E_html</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="c1"># print(se_data)</span>
+<span class="c1"># print(se_header)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">se_data</span><span class="p">)</span>
+<span class="c1"># df = pd.DataFrame(se_data, columns=se_header)</span>
+<span class="n">df</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[85]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Atlanta</td>
+      <td>Dream</td>
+      <td>23</td>
+      <td>11</td>
+      <td>.676</td>
+      <td>—</td>
+      <td>81.8</td>
+      <td>79.5</td>
+      <td>20</td>
+      <td>14</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Washington</td>
+      <td>Mystics</td>
+      <td>22</td>
+      <td>12</td>
+      <td>.647</td>
+      <td>1.5</td>
+      <td>84.5</td>
+      <td>81.4</td>
+      <td>21</td>
+      <td>13</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Connecticut</td>
+      <td>Sun</td>
+      <td>21</td>
+      <td>13</td>
+      <td>.618</td>
+      <td>2.0</td>
+      <td>87.6</td>
+      <td>81.7</td>
+      <td>25</td>
+      <td>9</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Chicago</td>
+      <td>Sky</td>
+      <td>13</td>
+      <td>21</td>
+      <td>.382</td>
+      <td>10.0</td>
+      <td>83.8</td>
+      <td>90.1</td>
+      <td>9</td>
+      <td>25</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>New</td>
+      <td>York</td>
+      <td>Liberty</td>
+      <td>7</td>
+      <td>27</td>
+      <td>.206</td>
+      <td>16.0</td>
+      <td>77.7</td>
+      <td>84.8</td>
+      <td>8</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Indiana</td>
+      <td>Fever</td>
+      <td>6</td>
+      <td>28</td>
+      <td>.176</td>
+      <td>17.0</td>
+      <td>76.4</td>
+      <td>85.7</td>
+      <td>6</td>
+      <td>28</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Save standings to csv</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
 </div>
 </div>
 
@@ -11980,8 +12458,4 @@ div#notebook {
     </div>
   </div>
 </body>
-
- 
-
-
 </html>
