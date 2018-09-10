@@ -34,6 +34,8 @@ def make_link(filename, section, link_within_doc=True, link_type='ipynb'):
 
 def display_master_toc(link_type='html'):
     display(Markdown('# Table of Contents'))
+    display(Markdown('* [Example Notebook](example.{})'.format(link_type)))
+    display(Markdown('* [Course GDoc](https://docs.google.com/document/d/11z7wbqWGln0uNj4E90ixz91eGLY0ubUs-qjmgIFVq0g/edit?usp=sharing)'))
 
     # TODO: Add acknowledgements?
     '''
@@ -46,9 +48,9 @@ def display_master_toc(link_type='html'):
     '''
     # display(Markdown('* [Acknowledgements](acknowledgements.{})'.format(link_type)))
 
-    num_units = 6
+    num_units = 5
     for n in range(num_units):
-        display_unit_toc('unit{}/notebook.ipynb'.format(n + 1), toc_head=False, link_within_doc=False, link_type=link_type)
+        display_unit_toc('unit{}/notebook.ipynb'.format(n), toc_head=False, link_within_doc=False, link_type=link_type)
         lab_link = '* [Unit {} Lab](unit{}/lab.ipynb)'.format(n + 1, n + 1)
         display(Markdown(lab_link))
 
