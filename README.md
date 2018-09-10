@@ -4,10 +4,13 @@ Welcome to the course home page!
 
 The steps below describe how to install Python on your machine, including an IDE (Spyder) and the course repo.
 
-## Options for viewing
-If you already have the course repo, you can read these notes as a browser-based book by opening `contents.html. Or, if you also have Jupyter Notebook, you can read the `.ipynb` files and try running their content.
+## Viewing Options
 
-If you are viewing this on Github, you should be able to start viewing the book by clicking on `contents.ipynb`. If the links are broken, it's because the wrong version of the file is saved to the repo.
+* **Option 1**: If you are viewing this on Github, you should be able to start viewing the book by clicking on `contents.ipynb`.
+* **Option 2**: Once you download the course repo, you can read these notes as a browser-based book by opening `contents.html`. The links may break occasionally if the wrong version of file/s are saved to the repo. In that event you can navigate forward and back using your browser. 
+* **Option 3**: If you also have Jupyter Notebook, you can read the `.ipynb` files and try running their content.
+
+
 
 
 ## Installing Python and Spyder
@@ -28,7 +31,6 @@ Spyder is an Integrated Development Environment (IDE) named so because it brings
 * Python / IPython Console (default bottom right pane)
 
 There are other helpful tools, too, like a Code Profiler, a Help Viewer, and a Plot Viewer. You can find them under `View -> Panes`.
-
 
 ## Virtual environments
 
@@ -67,6 +69,7 @@ The extra `(itec696)` signifies the virtual environment is active and commands l
 
 If you have Windows and your command prompt is slightly different, don't worry. We'll standardize our terminal next. This will give us practice working with a Unix-style command prompt, common to virtually all computers.
 
+
 ## Download [Cygwin Terminal](https://cygwin.com/install.html) (Windows users)
 
 Run the setup file and choose a mirror. When you get to the package selection prompt, use the search bar at the top to type in the following package names. For each package, search for the matching name, description, and category, then click the package to select it.
@@ -75,27 +78,64 @@ Run the setup file and choose a mirror. When you get to the package selection pr
 
 * *openssh: The OpenSSH server and client programs*. Category: Net. For remote computing. (Optional)
 
-* *vim: Text editor* (Optional)
+* *vim: Vi IMproved Text Editor.* Category: Editors (Optional)
 
+## Terminal Walkthrough
 
-## Get the Course Repo
+We'll work in the terminal (aka command line) frequently through this course. While many new programmers find the terminal daunting, it's extremely useful, and the simple operations will be familiar to anyone who has used a graphical file explorer.
 
-Open a Terminal (i.e. Cygwin Terminal on Windows) and run these lines, which navigate to a Documents folder, make a new directory for this course, and clone the repo:
+Like the file explorer, the terminal has a current directory where it's operating. From the current directory, one can navigate to other directories, make new folders, copy or move files, delete items, and so on.
+
+To start, try typing these lines, which use some of the common commands. A description appears next to each command as a **comment**, a segment of code that is ignored. In both terminal and in Python, comments begin with a hashtag `#` and can be an entire line or a partial line.
 
 ```bash
-cd ~/Code
-git clone https://github.com/gmf05/ITEC696.git
+pwd # show the Present Working Directory (PWD)
+ls # LiSt the contents of pwd
+echo "This is a test" # print text
+cd ~/Code # Change Directory to ~/Code
+mkdir test # MaKe DIRectory
+cd test
+ls
+cd .. # Change Directory to go up one level
+rmdir test # ReMove DIRectory
 ```
 
-## Installing libraries
+Some commands above overlap with the usual Windows command prompt, while others have synonymous functions (e.g. `ls` on Unix is `dir` on Windows).
+
+Where do these commands live? Use the `which` command to probe each one. Underneath your input, the terminal will print the directory (i.e. folder) where the command lives. 
+
+```bash
+which ls
+which echo
+which cd
+which rm
+which cp
+which mv
+which mkdir
+which rmdir
+which git # should work if git is installed
+which ssh # optional, if you installed openssh
+which vim # optional, if you installed vim
+```
+
+What do the paths have in common?
+
+Finally, let's make a couple symbolic links (i.e. shortcuts) with command `ln`. These will save us from typing out long Windows paths like `/cygdrive/c/Users/$USER/` all the time.
+
+```bash
+ln -s /cygdrive/c/Users/$USER/Code ~/Code
+```
+
+You can consider adding other folders like `Documents`, too.
+
+## Installing libraries#
 
 In addition to `python`, Anaconda also comes with a file called `pip`. Pip - short for "Pip installs packages" - is a package manager that handles downloading and setting up packages hosted on the [Python Package Index (PyPi)](https://pypi.org). 
 
 Pip can handle installing packages one-by-one (e.g. `pip install numpy`) or from a text list (e.g. `pip install -r requirements.txt`). Typically we'll use the latter option when setting up a virtual environment. To install the requirements included in the course repo, try running the sequence below.
 
 ```bash
-cd ~/Code/ITEC696
-pip install -r requirements.txt
+pip install -r ~/Code/ITEC696/requirements.txt
 
 ```
 You should begin to see lots of output printing to the terminal as Pip downloads each package then installs it. This may take several minutes to finish, depending on your internet connection and processor speed. 
@@ -106,26 +146,22 @@ The command `pip freeze` will print the list of currently installed packages. So
 pip freeze > requirements_v2.txt
 ```
 
-## Testing Python
+## Testing Python#
 
 Let's now ensure our libraries load correctly. You can run the test script in Python from the command line:
 
 ```bash
-python test.py
+python ~/Code/ITEC696/test.py
 ```
 
 It should generate some output:
 ```bash
-Starting imports
-  * Finished Python packages
-  * Starting local repo import
-  * Finished local repo import
+Starting imports...
 Done!
 < DATE AND TIME >
-```
-​
+```	
 
-## Setting PYTHONPATH #
+## Setting PYTHONPATH (Optional)
 
 If you skip this step altogether, you can still write Python code. You'll just need to comment out any of the Table of Contents cells when running `notebook.ipynb` files.
 
@@ -134,16 +170,13 @@ We can always add more folders to the `PYTHONPATH` later by appending them to th
 
 ---
 
-
 ### Windows
 
-Option 1: `Tools -> Current user environment variables`
-Add key `PYTHONPATH` with value `C:\...\Code\ITEC696\repo`. 
+* Option 1: Open Spyder. From the user menu, navigate `Tools -> Current user environment variables`. Add key `PYTHONPATH` with value `C:\...\Code\ITEC696\`. 
 
-Option 2: Press the Windows key and search "environment variables". Click `Set user environment variables`. Then add key `PYTHONPATH` with value `C:\...\Code\ITEC696\repo`.
+* Option 2: Press the Windows key and search "environment variables". Click `Set user environment variables`. Then add key `PYTHONPATH` with value `C:\...\Code\ITEC696\`.
 
 Additionally, we'll need to add this folder to `PYTHONPATH` through the Spyder GUI under `Tools`.
-
 
 ---
 
@@ -154,22 +187,25 @@ On Unix systems you can run the following, substituting `...` for the written ou
 
 
 ```bash
-echo 'export PATH="/.../Code/ITEC696/repo:$PATH"' >> ~/.bashrc
-echo 'export PYTHONPATH="/.../Code/ITEC696/repo"' >> ~/.bashrc
+echo 'export PATH="/.../Code/ITEC696/unit5:$PATH"' >> ~/.bashrc
+echo 'export PYTHONPATH="/.../Code/ITEC696"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-​
-## Testing Jupyter Notebook 
+## Testing Jupyter Notebook
 
-Now that our Python environment setup is complete, we will test one other tool we'll use in this course: Jupyter Notebook. Jupyter Notebook is an interactive, browser-based Python interpreter and is extremely useful for exporting documents.
+Now that our Python environment setup is complete, we will test one other tool we'll use in this course: Jupyter Notebook. **Jupyter Notebook** is an interactive, browser-based Python interpreter and is *extremely* useful for exporting documents.
 
 In your terminal run
 
+```bash
 source activate itec696 # may be optional, depending on system
-cd ~/Code/ITEC696
+cd ~/Code/ITEC696 
 jupyter notebook
+```
+
 And watch as a browser window opens, beginning in the same folder where you launched. You can now both
 
-Start a new notebook Untitled.ipynb by clicking New -> Python 3 from the dropdown menu in the upper right corner.
-Open any of the course notebooks, e.g. template.ipynb or unit1/notebook.ipynb
+* Start a new notebook `Untitled.ipynb` by clicking `New -> Python 3` from the dropdown menu in the upper right corner.
+* Open any of the course notebooks, e.g. `example.ipynb` or `unit0/lab.ipynb`.
+

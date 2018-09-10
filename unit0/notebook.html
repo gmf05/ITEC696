@@ -11757,7 +11757,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">shared</span> <span class="k">import</span> <span class="n">display_unit_toc</span>
@@ -11789,8 +11789,10 @@ div#notebook {
 <li><a href="#Virtual-environments">Virtual environments</a></li>
 <li><a href="#Download-[Cygwin-Terminal](https://cygwin.com/install.html">Download <a href="https://cygwin.com/install.html">Cygwin Terminal</a> (Windows users)</a>-(Windows-users))</li>
 <li><a href="#Terminal-Walkthrough">Terminal Walkthrough</a></li>
+<li><a href="#Get-the-Course-Repo">Get the Course Repo</a></li>
 <li><a href="#Installing-libraries">Installing libraries</a></li>
 <li><a href="#Testing-Python">Testing Python</a></li>
+<li><a href="#Setting-PYTHONPATH-(Optional">Setting PYTHONPATH (Optional)</a>)</li>
 <li><a href="#Testing-Jupyter-Notebook">Testing Jupyter Notebook</a></li>
 </ul>
 </li>
@@ -11810,8 +11812,8 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Installing-Python-and-Spyder">Installing Python and Spyder<a class="anchor-link" href="#Installing-Python-and-Spyder">&#182;</a></h2><p>Install <a href="https://conda.io/miniconda.html"><strong>Miniconda</strong></a> (preferred) or <a href="https://www.anaconda.com/download/"><strong>Anaconda</strong></a>. Anaconda comes with many packages already installed, while Miniconda is a more lightweight version allowing you to install only the packages you want. Here we prefer Miniconda since we'll soon install our own packages.</p>
-<p>To install packages we'll use the Python package manager <strong>pip</strong> (short for "pip installs packages"), which runs on the command line. We will use both Anaconda and pip via the command prompt. While the integrated development environment (IDE) <strong>Spyder</strong> offers a way to install packages, using the command line will allow us more flexibility to manage <strong>virtual environments</strong>, self-contained versions of Python. It also practices skills used in <strong>remote computing</strong>, i.e. doing computations on machines that are far away (often more powerful machines like desktops or supercomputing clusters).</p>
-<p>Install <a href="https://pythonhosted.org/spyder">Spyder</a> by opening a command prompt (<em>Windows</em>: Anaconda command prompt; <em>Mac/Linux</em>: Terminal) and running</p>
+<p>To install packages we'll use the Python package manager <strong>pip</strong> (short for "pip installs packages"), which runs on the command line. We will use both Anaconda and pip via the command prompt. While the integrated development environment (IDE) <a href="https://pythonhosted.org/spyder"><strong>Spyder</strong></a> offers a way to install packages, using the command line will allow us more flexibility to manage <strong>virtual environments</strong>, self-contained versions of Python plus a set of packages. It also practices skills used in <strong>remote computing</strong>, i.e. doing computations on machines that are far away (often more powerful machines like desktops or supercomputing clusters).</p>
+<p>Install Spyder by opening a command prompt (<em>Windows</em>: Anaconda command prompt; <em>Mac/Linux</em>: Terminal) and running</p>
 <div class="highlight"><pre><span></span>conda install -c anaconda spyder
 </pre></div>
 <p>Spyder is an Integrated Development Environment (IDE) named so because it brings together several software tools that are useful when programming in Python. The two main tools are</p>
@@ -11861,7 +11863,7 @@ div#notebook {
 </li>
 <li><p><em>openssh: The OpenSSH server and client programs</em>. Category: Net. For remote computing. (Optional)</p>
 </li>
-<li><p><em>vim: Text editor</em> (Optional)</p>
+<li><p><em>vim: Vi IMproved Text Editor.</em> Category: Editors (Optional)</p>
 </li>
 </ul>
 
@@ -11873,10 +11875,38 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Terminal-Walkthrough">Terminal Walkthrough<a class="anchor-link" href="#Terminal-Walkthrough">&#182;</a></h2><p>At some point, make some symbolic links</p>
-<div class="highlight"><pre><span></span>ln -s /cygdrive/c/Users/<span class="nv">$USER</span>/Code Code
+<h2 id="Terminal-Walkthrough">Terminal Walkthrough<a class="anchor-link" href="#Terminal-Walkthrough">&#182;</a></h2><p>We'll work in the terminal (aka command line) frequently through this course. While many new programmers find the terminal daunting, it's extremely useful, and the simple operations will be familiar to anyone who has used a graphical file explorer.</p>
+<p>Like the file explorer, the terminal has a current directory where it's operating. From the current directory, one can navigate to other directories, make new folders, copy or move files, delete items, and so on.</p>
+<p>To start, try typing these lines, which use some of the common commands. A description appears next to each command as a <strong>comment</strong>, a segment of code that is ignored. In both terminal and in Python, comments begin with a hashtag <code>#</code> and can be an entire line or a partial line.</p>
+<div class="highlight"><pre><span></span><span class="nb">pwd</span> <span class="c1"># show the Present Working Directory (PWD)</span>
+ls <span class="c1"># LiSt the contents of pwd</span>
+<span class="nb">echo</span> <span class="s2">&quot;This is a test&quot;</span> <span class="c1"># print text</span>
+<span class="nb">cd</span> ~/Code <span class="c1"># Change Directory to ~/Code</span>
+mkdir <span class="nb">test</span> <span class="c1"># MaKe DIRectory</span>
+<span class="nb">cd</span> <span class="nb">test</span>
+ls
+<span class="nb">cd</span> .. <span class="c1"># Change Directory to go up one level</span>
+rmdir <span class="nb">test</span> <span class="c1"># ReMove DIRectory</span>
 </pre></div>
-<p>We can substitute Code for any folder</p>
+<p>Some commands above overlap with the usual Windows command prompt, while others have synonymous functions (e.g. <code>ls</code> on Unix is <code>dir</code> on Windows).</p>
+<p>Where do these commands live? Use the <code>which</code> command to probe each one. Underneath your input, the terminal will print the directory (i.e. folder) where the command lives.</p>
+<div class="highlight"><pre><span></span>which ls
+which <span class="nb">echo</span>
+which <span class="nb">cd</span>
+which rm
+which cp
+which mv
+which mkdir
+which rmdir
+which git <span class="c1"># should work if git is installed</span>
+which ssh <span class="c1"># optional, if you installed openssh</span>
+which vim <span class="c1"># optional, if you installed vim</span>
+</pre></div>
+<p>What do the paths have in common?</p>
+<p>Finally, let's make a couple symbolic links (i.e. shortcuts) with command <code>ln</code>. These will save us from typing out long Windows paths like <code>/cygdrive/c/Users/$USER/</code> all the time.</p>
+<div class="highlight"><pre><span></span>ln -s /cygdrive/c/Users/<span class="nv">$USER</span>/Code ~/Code
+</pre></div>
+<p>You can consider adding other folders like <code>Documents</code>, too.</p>
 
 </div>
 </div>
@@ -11886,10 +11916,14 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Get-the-Course-Repo">Get the Course Repo<a class="anchor-link" href="#Get-the-Course-Repo">&#182;</a></h2><p>Open a Terminal (i.e. Cygwin Terminal on Windows) and run these lines, which navigate to a Documents folder, make a new directory for this course, and clone the repo:</p>
-<div class="highlight"><pre><span></span><span class="nb">cd</span> ~/Code
-git clone https://github.com/gmf05/ITEC696.git
+<h2 id="Get-the-Course-Repo">Get the Course Repo<a class="anchor-link" href="#Get-the-Course-Repo">&#182;</a></h2><p>Open a Terminal (i.e. Cygwin Terminal on Windows) and run this line, which copies the course repo into a new folder at <code>~/Code/ITEC696</code>.</p>
+<div class="highlight"><pre><span></span>git clone https://github.com/gmf05/ITEC696.git ~/Code/ITEC696
+mkdir ~/Code/ITEC696/my_labs
 </pre></div>
+<p>The second line makes a new directory called `my_abs</p>
+<p><strong>Windows users</strong>: Note that because we made the shortcut <code>~/Code</code> the real path of the repo is <code>C:\Users\$USER\Code\ITEC696</code>.</p>
+<p><strong>Mac users</strong>: The real path of the repo is <code>/Users/$USER/Code/ITEC696</code></p>
+<p><strong>Linux users</strong>: The real path of the repo is <code>/home/$USER/Code/ITEC696</code></p>
 
 </div>
 </div>
@@ -11901,8 +11935,7 @@ git clone https://github.com/gmf05/ITEC696.git
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Installing-libraries">Installing libraries<a class="anchor-link" href="#Installing-libraries">&#182;</a></h2><p>In addition to <code>python</code>, Anaconda also comes with a file called <code>pip</code>. Pip - short for "Pip installs packages" - is a package manager that handles downloading and setting up packages hosted on the <a href="https://pypi.org">Python Package Index (PyPi)</a>.</p>
 <p>Pip can handle installing packages one-by-one (e.g. <code>pip install numpy</code>) or from a text list (e.g. <code>pip install -r requirements.txt</code>). Typically we'll use the latter option when setting up a virtual environment. To install the requirements included in the course repo, try running the sequence below.</p>
-<div class="highlight"><pre><span></span><span class="nb">cd</span> ~/Code/ITEC696
-pip install -r requirements.txt
+<div class="highlight"><pre><span></span>pip install -r ~/Code/ITEC696/requirements.txt
 </pre></div>
 <p>You should begin to see lots of output printing to the terminal as Pip downloads each package then installs it. This may take several minutes to finish, depending on your internet connection and processor speed.</p>
 <p>The command <code>pip freeze</code> will print the list of currently installed packages. So, if you happen to install a new package and want to generate a revised list of requirements, you can export the output of <code>pip freeze</code> to a file like so:</p>
@@ -11918,13 +11951,10 @@ pip install -r requirements.txt
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Testing-Python">Testing Python<a class="anchor-link" href="#Testing-Python">&#182;</a></h2><p>Let's now ensure our libraries load correctly. You can run the test script in Python from the command line:</p>
-<div class="highlight"><pre><span></span>python test.py
+<div class="highlight"><pre><span></span>python ~/Code/ITEC696/test.py
 </pre></div>
 <p>It should generate some output:</p>
-<div class="highlight"><pre><span></span>Starting imports
-  * Finished Python packages
-  * Starting <span class="nb">local</span> repo import
-  * Finished <span class="nb">local</span> repo import
+<div class="highlight"><pre><span></span>Starting imports...
 Done!
 &lt; DATE AND TIME &gt;
 </pre></div>
@@ -11937,17 +11967,20 @@ Done!
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Setting-PYTHONPATH">Setting PYTHONPATH<a class="anchor-link" href="#Setting-PYTHONPATH">&#182;</a></h2><p>If you skip this step altogether, you can still write Python code. You'll just need to comment out any of the Table of Contents cells when running <code>notebook.ipynb</code> files.</p>
+<h2 id="Setting-PYTHONPATH-(Optional)">Setting PYTHONPATH (Optional)<a class="anchor-link" href="#Setting-PYTHONPATH-(Optional)">&#182;</a></h2><p>If you skip this step altogether, you can still write Python code. You'll just need to comment out any of the Table of Contents cells when running <code>notebook.ipynb</code> files.</p>
 <p>We can always add more folders to the <code>PYTHONPATH</code> later by appending them to the variable we just assigned, so long as we separate the folders with a colon <code>:</code>, similar to the system <code>PATH</code> variable.</p>
 <hr>
-<h3 id="Windows">Windows<a class="anchor-link" href="#Windows">&#182;</a></h3><p>Option 1: <code>Tools -&gt; Current user environment variables</code>
-Add key <code>PYTHONPATH</code> with value <code>C:\...\Code\ITEC696\repo</code>.</p>
-<p>Option 2: Press the Windows key and search "environment variables". Click <code>Set user environment variables</code>. Then add key <code>PYTHONPATH</code> with value <code>C:\...\Code\ITEC696\repo</code>.</p>
+<h3 id="Windows">Windows<a class="anchor-link" href="#Windows">&#182;</a></h3><ul>
+<li><p>Option 1: Open Spyder. From the user menu, navigate <code>Tools -&gt; Current user environment variables</code>. Add key <code>PYTHONPATH</code> with value <code>C:\...\Code\ITEC696\repo</code>.</p>
+</li>
+<li><p>Option 2: Press the Windows key and search "environment variables". Click <code>Set user environment variables</code>. Then add key <code>PYTHONPATH</code> with value <code>C:\...\Code\ITEC696\repo</code>.</p>
+</li>
+</ul>
 <p>Additionally, we'll need to add this folder to <code>PYTHONPATH</code> through the Spyder GUI under <code>Tools</code>.</p>
 <hr>
 <h3 id="Mac/Linux">Mac/Linux<a class="anchor-link" href="#Mac/Linux">&#182;</a></h3><p>On Unix systems you can run the following, substituting <code>...</code> for the written out path on your system. Note the usual home folder shortcut <code>~</code> may not work here.</p>
-<div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export PATH=&quot;/.../Code/ITEC696/repo:$PATH&quot;&#39;</span> &gt;&gt; ~/.bashrc
-<span class="nb">echo</span> <span class="s1">&#39;export PYTHONPATH=&quot;/.../Code/ITEC696/repo&quot;&#39;</span> &gt;&gt; ~/.bashrc
+<div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export PATH=&quot;/.../Code/ITEC696/unit5:$PATH&quot;&#39;</span> &gt;&gt; ~/.bashrc
+<span class="nb">echo</span> <span class="s1">&#39;export PYTHONPATH=&quot;/.../Code/ITEC696&quot;&#39;</span> &gt;&gt; ~/.bashrc
 <span class="nb">source</span> ~/.bashrc
 </pre></div>
 
