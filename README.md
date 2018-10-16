@@ -6,8 +6,8 @@ The steps below describe how to install Python on your machine, including an IDE
 
 ## Viewing Options
 
-* **Option 1**: If you are viewing this on Github, you should be able to start viewing the book by clicking on `contents.ipynb`.
-* **Option 2**: Once you download the course repo, you can read these notes as a browser-based book by opening `contents.html`. The links may break occasionally if the wrong version of file/s are saved to the repo. In that event you can navigate forward and back using your browser. 
+* **Option 1**: If you are viewing this on Github, you should be able to start viewing the book by clicking on [`contents.ipynb`](https://github.com/gmf05/ITEC696/blob/master/contents.ipynb).
+* **Option 2**: Once you download the course repo, you can read these notes as a browser-based book by opening [`contents.html`](https://github.com/gmf05/ITEC696/blob/master/contents.html). In that event you can navigate forward and back using your browser.
 * **Option 3**: If you also have Jupyter Notebook, you can read the `.ipynb` files and try running their content.
 
 
